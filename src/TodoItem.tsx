@@ -1,9 +1,14 @@
 import React from "react";
 
-export default function TodoItem() {
+type TodoItemProps = {
+  text: string;
+  completed: boolean;
+};
+
+export default function TodoItem({ text, completed }: TodoItemProps) {
   return (
     <li>
-      <span>Cebolla</span>
+      <span>{text}</span>
       <button>X</button>
     </li>
   );

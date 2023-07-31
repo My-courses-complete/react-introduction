@@ -1,7 +1,12 @@
 import React from 'react'
 
-export default function TodoCounter() {
+type TodoCounterProps = {
+	total: number
+	completed: number
+}
+
+export default function TodoCounter({ total, completed }: TodoCounterProps) {
   return (
-	<h2>Has completado 2 de 3 TODOs</h2>
+	<h2>Has completado {completed} de {total} TODOs</h2>
   )
 }
