@@ -3,6 +3,7 @@ import TodoSearch from "./TodoSearch";
 import TodoList from "./TodoList";
 import TodoItem from "./TodoItem";
 import CreateTodoButton from "./CreateTodoButton";
+import React from "react";
 
 interface Todo {
   text: string;
@@ -17,10 +18,16 @@ const defaultTodos: Array<Todo> = [
 ];
 
 function App() {
+  const [searchValue, setSearchValue] = React.useState("");
+  const [todos, setTodos] = React.useState(defaultTodos);
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodos = todos.length;
+
   return (
     <>
-      <TodoCounter total={3} completed={1} />
-      <TodoSearch />
+      <TodoCounter total={totalTodos} completed={completedTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
         {defaultTodos.map((todo, index) => (
           <TodoItem text={todo.text} completed={todo.completed} key={index} />

@@ -1,9 +1,12 @@
 import React from "react";
 import "./TodoSearch.css";
 
-export default function TodoSearch() {
-  const [searchValue, setSearchValue] = React.useState("");
+type TodoSearchProps = {
+  searchValue: string;
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+};
 
+export default function TodoSearch({ searchValue, setSearchValue }: TodoSearchProps) {
   return (
     <input
       placeholder="Cebolla"
