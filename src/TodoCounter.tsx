@@ -1,12 +1,14 @@
-import React from 'react'
+import "./TodoCounter.css";
 
 type TodoCounterProps = {
-	total: number
-	completed: number
-}
+  total: number;
+  completed: number;
+};
 
 export default function TodoCounter({ total, completed }: TodoCounterProps) {
   return (
-	<h2>Has completado {completed} de {total} TODOs</h2>
-  )
+	<h1 className="TodoCounter">
+      Has completado <span>{completed}</span> de <span>{total}</span> TODOs
+    </h1>
+  );
 }

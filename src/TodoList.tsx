@@ -1,9 +1,6 @@
-import React from 'react'
+import React from "react";
+import "./TodoList.css";
 
 export default function TodoList(props: { children: React.ReactNode }) {
-  return (
-	<ul>
-		{props.children}
-	</ul>
-  )
+  return <ul className="TodoList">{props.children}</ul>;
 }
