@@ -29,13 +29,25 @@ function App() {
     return todoText.includes(searchText);
   });
 
+  const completeTodo = (index: number) => {
+    const newTodos = [...todos];
+    newTodos[index].completed = true;
+    setTodos(newTodos);
+  };
+
+  const deleteTodo = (index: number) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
   return (
     <>
       <TodoCounter total={totalTodos} completed={completedTodos} />
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
         {searchedTodos.map((todo, index) => (
-          <TodoItem text={todo.text} completed={todo.completed} key={index} />
+          <TodoItem text={todo.text} completed={todo.completed} key={index} onComplete={() => completeTodo(index)} onDelete={() => deleteTodo(index)}/>
         ))}
       </TodoList>
       <CreateTodoButton />
