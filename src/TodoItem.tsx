@@ -1,3 +1,5 @@
+import CompleteIcon from './CompleteIcon';
+import DeleteIcon from './DeleteIcon';
 import './TodoItem.css'
 
 type TodoItemProps = {
@@ -10,15 +12,17 @@ type TodoItemProps = {
 export default function TodoItem({ text, completed, onComplete, onDelete }: TodoItemProps) {
   return (
 	<li className="TodoItem">
-      <span className={`Icon Icon-check ${completed && "Icon-check--active"}`} onClick={onComplete}>
+      {/* <span className={`Icon Icon-check ${completed && "Icon-check--active"}`} onClick={onComplete}>
         V
-      </span>
+      </span> */}
+      <CompleteIcon />
       <p className={`TodoItem-p ${completed && "TodoItem-p--complete"}`}>
         {text}
       </p>
-      <span className="Icon Icon-delete" onClick={onDelete}>
+      <DeleteIcon />
+      {/* <span className="Icon Icon-delete" onClick={onDelete}>
         X
-      </span>
+      </span> */}
     </li>
   );
 }
