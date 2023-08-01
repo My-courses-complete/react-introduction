@@ -1,9 +1,10 @@
 import TodoIcon from "./TodoIcon";
 
-export default function CompleteIcon() {
-  return (
-	<TodoIcon 
-		type="check"
-	/>
-  )
+type CompleteIconProps = {
+  completed: boolean;
+  onComplete: () => void;
+};
+
+export default function CompleteIcon({ completed, onComplete }: CompleteIconProps) {
+  return <TodoIcon type="check" color={completed ? "green" : "gray"} onClick={onComplete}/>;
 }

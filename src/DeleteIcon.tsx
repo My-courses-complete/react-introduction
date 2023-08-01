@@ -1,5 +1,9 @@
 import TodoIcon from "./TodoIcon";
 
-export default function DeleteIcon() {
-  return <TodoIcon type="delete" />;
+type DeleteIconProps = {
+	onDelete: () => void;
+};
+
+export default function DeleteIcon({ onDelete }: DeleteIconProps) {
+  return <TodoIcon type="delete" color="gray" onClick={onDelete}/>;
 }
