@@ -10,16 +10,23 @@ interface Todo {
   completed: boolean;
 }
 
-const defaultTodos: Array<Todo> = [
-  { text: "Cortar cebolla", completed: true },
-  { text: "Tomar el curso de intro a React", completed: false },
-  { text: "Llorar con la llorona", completed: false },
-  { text: "LA CEBOLLA", completed: false },
-];
-
 function App() {
   const [searchValue, setSearchValue] = React.useState("");
-  const [todos, setTodos] = React.useState(defaultTodos);
+  const [todos , setTodos] = React.useState(() : Array<Todo> => {
+    const savedTodos = localStorage.getItem("TODOS_V1");
+    if (savedTodos) {
+      return JSON.parse(savedTodos);
+    } else {
+      localStorage.setItem("TODOS_V1", JSON.stringify([]));
+      return [];
+    }
+  });
+
+  const saveTodos = (newTodos: Array<Todo>) => {
+    const stringifiedTodos = JSON.stringify(newTodos);
+    localStorage.setItem("TODOS_V1", stringifiedTodos);
+    setTodos(newTodos);
+  };
 
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
   const totalTodos = todos.length;
@@ -32,13 +39,13 @@ function App() {
   const completeTodo = (index: number) => {
     const newTodos = [...todos];
     newTodos[index].completed = true;
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   const deleteTodo = (index: number) => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   return (
