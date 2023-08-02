@@ -1,5 +1,5 @@
-import { ReactComponent as DeleteSVG } from "./delete.svg";
-import { ReactComponent as CheckSVG } from "./check.svg";
+import { ReactComponent as DeleteSVG } from "../assets/delete.svg";
+import { ReactComponent as CheckSVG } from "../assets/check.svg";
 
 type TodoIconProps = {
   type: string;
