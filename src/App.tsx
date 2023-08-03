@@ -8,7 +8,12 @@ import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
   const [searchValue, setSearchValue] = React.useState("");
-  const { item: todos, saveItem: saveTodos } = useLocalStorage("TODOS_V1");
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage("TODOS_V1");
 
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
   const totalTodos = todos.length;
@@ -35,6 +40,9 @@ function App() {
       <TodoCounter total={totalTodos} completed={completedTodos} />
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
+        {loading && <p>loading...</p>}
+        {error && <p>error...</p>}
+        {!loading && !searchedTodos.length && <p>create your first todo!</p>}
         {searchedTodos.map((todo, index) => (
           <TodoItem
             text={todo.text}
