@@ -28,7 +28,7 @@ function App() {
           />
         ))}
       </TodoList>
-      <CreateTodoButton openModal={() => setOpenModal(true)}/>
+      <CreateTodoButton openModal={() => setOpenModal(!modalIsOpen)}/>
       
 
         {modalIsOpen && <Modal> <h1>Modal</h1> </Modal>}
