@@ -11,10 +11,13 @@ export const TodoContext = React.createContext<TodoContext>({
   searchedTodos: [],
   completeTodo: () => {},
   deleteTodo: () => {},
+  openModal: false,
+  setOpenModal: () => {},
 });
 
 export default function TodoProvider({ children }: TodoContextProps) {
   const [searchValue, setSearchValue] = React.useState("");
+  const [openModal, setOpenModal] = React.useState(false);
   const {
     item: todos,
     saveItem: saveTodos,
@@ -54,6 +57,8 @@ export default function TodoProvider({ children }: TodoContextProps) {
         searchedTodos,
         completeTodo,
         deleteTodo,
+        openModal,
+        setOpenModal,
       }}
     >
       {children}

@@ -25,4 +25,10 @@ type TodoContext = {
 	searchedTodos: Array<Todo>;
 	completeTodo: (index: number) => void;
 	deleteTodo: (index: number) => void;
+	openModal: boolean;
+	setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+type CreateTodoButtonProps = {
+	openModal: () => void;
 };

@@ -1,12 +1,10 @@
 import React from "react";
 import "./TodoSearch.css";
+import { TodoContext } from "../context/todoContext";
 
-type TodoSearchProps = {
-  searchValue: string;
-  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
-};
+export default function TodoSearch() {
+  const { searchValue, setSearchValue } = React.useContext(TodoContext);
 
-export default function TodoSearch({ searchValue, setSearchValue }: TodoSearchProps) {
   return (
     <input
       placeholder="Cebolla"
