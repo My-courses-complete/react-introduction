@@ -6,6 +6,7 @@ import CreateTodoButton from "./CreateTodoButton";
 import { TodoContext } from "./context/todoContext";
 import React from "react";
 import Modal from "./modal";
+import TodoForm from "./TodoForm";
 
 function App() {
   const { loading, error, searchedTodos, completeTodo, deleteTodo, openModal: modalIsOpen, setOpenModal } =
@@ -31,7 +32,7 @@ function App() {
       <CreateTodoButton openModal={() => setOpenModal(!modalIsOpen)}/>
       
 
-        {modalIsOpen && <Modal> <h1>Modal</h1> </Modal>}
+        {modalIsOpen && <Modal> <TodoForm/> </Modal>}
 
     </>
   );
