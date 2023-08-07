@@ -27,6 +27,7 @@ type TodoContext = {
 	deleteTodo: (index: number) => void;
 	openModal: boolean;
 	setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+	addTodo: (text: string) => void;
 };
 
 type CreateTodoButtonProps = {

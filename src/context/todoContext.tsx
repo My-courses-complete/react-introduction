@@ -13,6 +13,7 @@ export const TodoContext = React.createContext<TodoContext>({
   deleteTodo: () => {},
   openModal: false,
   setOpenModal: () => {},
+  addTodo: () => {},
 });
 
 export default function TodoProvider({ children }: TodoContextProps) {
@@ -32,6 +33,15 @@ export default function TodoProvider({ children }: TodoContextProps) {
     const searchText = searchValue.toLowerCase();
     return todoText.includes(searchText);
   });
+
+  const addTodo = (text: string) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      completed: false,
+      text,
+    });
+    saveTodos(newTodos);
+  };
 
   const completeTodo = (index: number) => {
     const newTodos = [...todos];
@@ -59,6 +69,7 @@ export default function TodoProvider({ children }: TodoContextProps) {
         deleteTodo,
         openModal,
         setOpenModal,
+        addTodo,
       }}
     >
       {children}
